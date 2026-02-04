@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAG Visualizer</title>
+  <!-- External dependencies -->
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Application styles -->
+  <link rel="stylesheet" href="app.css">
+</head>
+
+<body x-data="dagApp()" x-init="init()">
+  <div class="container">
+    <header>
+      <h1>DAG Visualizer</h1>
+      <div class="dag-id" x-text="dagData.dag_id"></div>
+    </header>
+
+    <div class="meta-info">
+      <div class="meta-item">Schedule: <span x-text="dagData.schedule_interval"></span></div>
+      <div class="meta-item">Start: <span x-text="dagData.start_date"></span></div>
+      <div class="meta-item">Catchup: <span x-text="dagData.catchup"></span></div>
+      <div class="meta-item">Tags: <span x-text="dagData.tags.join(', ')"></span></div>
+    </div>
+
+    <div id="graph"></div>
+
+    <div class="legend">
+      <!-- Status legend -->
+      <div class="legend-item">
+        <div class="legend-dot" style="background: #dafbe1; border: 2px solid #1a7f37;"></div>
+        <span>Completed</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: #ddf4ff; border: 2px solid #0969da;"></div>
+        <span>Running</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: #ffffff; border: 2px solid #57606a;"></div>
+        <span>Pending</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: #ffebe9; border: 2px solid #cf222e;"></div>
+        <span>Failed</span>
+      </div>
+
+      <!-- Node type legend -->
+      <div class="legend-item" style="margin-left: 16px; padding-left: 16px; border-left: 1px solid #d0d7de;">
+        <span>⚡</span>
+        <span>Root node</span>
+      </div>
+      <div class="legend-item">
+        <span>🍃</span>
+        <span>Leaf node</span>
+      </div>
+      <div class="legend-item">
+        <span>◐</span>
+        <span>Running (animated)</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal-overlay" :class="{ 'active': modalOpen }" @click.self="modalOpen = false"
+    @keydown.escape.window="modalOpen = false">
+    <div class="modal" x-show="modalOpen" x-transition>
+      <div class="modal-header">
+        <h2 x-text="selectedTask?.task_id || 'Task Details'"></h2>
+        <button class="modal-close" @click="modalOpen = false">×</button>
+      </div>
+      <div class="modal-body" x-show="selectedTask">
+        <!-- Status -->
+        <div class="modal-section">
+          <h3>Status</h3>
+          <span class="status-badge" :class="selectedTask?.status" x-text="selectedTask?.status"></span>
+        </div>
+
+
+        <!-- Task Info -->
+        <div class="modal-section">
+          <h3>Task Info</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <label>Operator</label>
+              <span x-text="selectedTask?.operator"></span>
+            </div>
+            <div class="info-item">
+              <label>Dependencies</label>
+              <span :class="{ 'empty': selectedTask?.depends_on.length === 0 }"
+                x-text="selectedTask?.depends_on.length > 0 ? selectedTask.depends_on.join(', ') : 'None (root node)'"></span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Timestamps -->
+        <div class="modal-section">
+          <h3>Timestamps</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <label>Started At</label>
+              <span :class="{ 'empty': !selectedTask?.started_at }"
+                x-text="selectedTask?.started_at || 'Not started'"></span>
+            </div>
+            <div class="info-item">
+              <label>Completed At</label>
+              <span :class="{ 'empty': !selectedTask?.completed_at }" x-text="selectedTask?.completed_at || '—'"></span>
+            </div>
+            <div class="info-item">
+              <label>Failed At</label>
+              <span :class="{ 'empty': !selectedTask?.failed_at }" x-text="selectedTask?.failed_at || '—'"></span>
+            </div>
+            <div class="info-item">
+              <label>Duration</label>
+              <span :class="{ 'empty': !selectedTask?.started_at }" x-text="calculateDuration(selectedTask)"></span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Error -->
+        <div class="modal-section" x-show="selectedTask?.error_message">
+          <h3>Error</h3>
+          <div class="error-box" x-text="selectedTask?.error_message"></div>
+        </div>
+
+
+        <!-- Logs -->
+        <div class="modal-section">
+          <h3>Logs</h3>
+          <template x-if="selectedTask?.logs?.length > 0">
+            <div class="logs-container">
+              <template x-for="log in selectedTask.logs" :key="log">
+                <div class="log-line" :class="getLogLevel(log)" x-text="log"></div>
+              </template>
+            </div>
+          </template>
+          <p class="no-logs" x-show="!selectedTask?.logs?.length">No logs available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application script -->
+  <script src="app.js"></script>
+</body>
+
+</html>

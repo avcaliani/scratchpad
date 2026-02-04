@@ -1,0 +1,307 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+    background: #f6f8fa;
+    min-height: 100vh;
+    padding: 24px;
+    color: #24292f;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #d0d7de;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #24292f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+header h1::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #1a7f37;
+    border-radius: 50%;
+}
+
+header .dag-id {
+    color: #0969da;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    background: #ddf4ff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* Meta info */
+.meta-info {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 8px 16px;
+    color: #57606a;
+    font-size: 0.875rem;
+}
+
+.meta-item span {
+    color: #24292f;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-weight: 500;
+}
+
+/* Graph container */
+#graph {
+    width: 100%;
+    height: 500px;
+    background: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #d0d7de;
+}
+
+/* Legend */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    color: #57606a;
+    font-size: 0.75rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+}
+
+/* Modal overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+/* Modal */
+.modal {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #d0d7de;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    color: #24292f;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #57606a;
+    padding: 0;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #24292f;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Modal sections */
+.modal-section {
+    margin-bottom: 20px;
+}
+
+.modal-section:last-child {
+    margin-bottom: 0;
+}
+
+.modal-section h3 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #57606a;
+    margin-bottom: 8px;
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.status-badge.completed {
+    background: #dafbe1;
+    color: #1a7f37;
+}
+
+.status-badge.running {
+    background: #ddf4ff;
+    color: #0969da;
+}
+
+.status-badge.pending {
+    background: #eaeef2;
+    color: #57606a;
+}
+
+.status-badge.failed {
+    background: #ffebe9;
+    color: #cf222e;
+}
+
+/* Info grid */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.info-item {
+    background: #f6f8fa;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #d0d7de;
+}
+
+.info-item label {
+    font-size: 0.7rem;
+    color: #57606a;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.info-item span {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    color: #24292f;
+}
+
+.info-item span.empty {
+    color: #8c959f;
+    font-style: italic;
+}
+
+/* Error box */
+.error-box {
+    background: #ffebe9;
+    border: 1px solid #cf222e;
+    border-radius: 6px;
+    padding: 12px;
+    color: #cf222e;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+}
+
+/* Logs container */
+.logs-container {
+    background: #24292f;
+    border-radius: 6px;
+    padding: 12px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.log-line {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: #c9d1d9;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.log-line.info {
+    color: #58a6ff;
+}
+
+.log-line.warn {
+    color: #d29922;
+}
+
+.log-line.error,
+.log-line.fatal {
+    color: #f85149;
+}
+
+.no-logs {
+    color: #8c959f;
+    font-style: italic;
+    font-size: 0.85rem;
+}
