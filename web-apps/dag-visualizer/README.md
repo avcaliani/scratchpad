@@ -1,10 +1,19 @@
-# Playground 🛝
+# DAG Viz 🧭
 
-<img align='right' width="196px" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWJuajJzeXNtdGo2N3Q0aG16Mmd1cXU4cWVpd2Voemp0bTR2anB2eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/H1jSPXCJmo8AZi3gdP/giphy.gif">
+> 🤖 This web page was 100% generated using AI.
 
-> Place where random stuff happens!
+### Why did I created this?
 
-In this repo I'll store code snippets I've created to test or learn something.
+I wanted to know how hard would be to create a dynamic DAG in a HTML page.
 
-1. [`spark`](./spark) - Apache Spark experiments, codes and notebooks.
-2. [`web-apps`](./web-apps) - Front-End related experiments.
+At the time, I had some ideas in mind that this could be useful.
+
+> 💡 Am I going to use?
+> Idk, but this took me 30m tops... So, why not? ¯\_(ツ)_/¯
+
+To run, there's no mistery, you just have to open the `index.html` file.
+
+### What can I learn from this code snippet?
+
+  1. [vis-network](https://github.com/visjs/vis-network) a Graph JS lib.
+  2. [Alpine.js](https://alpinejs.dev/) an modern alternative for jQuery.
