@@ -17,3 +17,7 @@ To run, there's no mistery, you just have to open the `index.html` file.
 
   1. [vis-network](https://github.com/visjs/vis-network) a Graph JS lib.
   2. [Alpine.js](https://alpinejs.dev/) an modern alternative for jQuery.
+
+### Result
+
+![screenshot](./screenshot.png)
