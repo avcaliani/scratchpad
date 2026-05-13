@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYC Taxi App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div x-data="{ tripId: '', result: null }" class="bg-white p-8 rounded shadow w-full max-w-md">
+    <h1 class="text-xl font-bold mb-4">Trip Search</h1>
+    <input
+      x-model="tripId"
+      type="text"
+      placeholder="Enter trip ID"
+      class="w-full border rounded px-3 py-2 mb-4 text-sm"
+    />
+    <button
+      @click="result = await fetch(`/api/trips/${tripId}`).then(r => r.json())"
+      class="w-full bg-blue-600 text-white py-2 rounded text-sm hover:bg-blue-700"
+    >
+      Search
+    </button>
+    <pre x-show="result" x-text="JSON.stringify(result, null, 2)" class="mt-4 text-xs bg-gray-50 p-3 rounded overflow-auto"></pre>
+  </div>
+</body>
+</html>
