@@ -1,14 +1,14 @@
 ---
-status: todo
+status: done
 created: 2026-05-12
-updated: 2026-05-12
+updated: 2026-05-14
 ---
 
 # 2. Data Pipeline
 
 **Stack:** Databricks SQL · Delta Lake · Unity Catalog  
 **Source:** `samples.nyctaxi.trips`  
-**Target:** `usr.gold.nyctaxi_trips`  
+**Target:** `workspace.gold.nyctaxi_trips`  
 **Deliverable:** `pipeline/gold_nyctaxi_trips.sql`
 
 ---
@@ -78,8 +78,8 @@ current_timestamp() AS ingestion_timestamp
 
 ## Gold Table
 
-- Create schema `usr.gold` if not exists
-- `CREATE OR REPLACE TABLE usr.gold.nyctaxi_trips`
+- Create schema `workspace.gold` if not exists
+- `CREATE OR REPLACE TABLE workspace.gold.nyctaxi_trips`
 - Format: Delta
 - Load: full overwrite
 - Clustering: `CLUSTER BY (trip_id)` (Liquid Clustering)
