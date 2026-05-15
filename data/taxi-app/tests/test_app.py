@@ -5,7 +5,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 import api.db
-from app import app
+from main import app
 
 VALID_ID = "3eed23d2881bf5c439c98b379eb0d79f5597668b22a1f6c821d06a7a9de0e7c0"
 
@@ -73,8 +73,8 @@ def test_get_trip_success(mock_connect, client):
     assert body["trip_distance"] == 5.2
     assert body["fare_amount"] == 18.5
     assert body["pickup_zip"] == 10001
-    assert body["data_quality_checks"]["status"] == "VALID"
-    assert body["data_quality_checks"]["invalid_fare"] is False
+    assert body["record_quality_status"] == "VALID"
+    assert body["flag_invalid_fare"] is False
 
 
 @patch("api.db.dbsql.connect")

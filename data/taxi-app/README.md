@@ -30,7 +30,7 @@ python -m venv .venv \
 Start the API server.
 
 ```bash
-uvicorn app:app --reload
+uvicorn main:app --reload
 ```
 
 The app is now running at `http://127.0.0.1:8000`.
@@ -77,16 +77,14 @@ curl http://127.0.0.1:8000/api/trips/<trip_id>
   "pickup_zip": 10001,
   "dropoff_zip": 10003,
   "ingestion_timestamp": "2024-01-15T10:00:00",
-  "data_quality_checks": {
-    "status": "VALID",
-    "invalid_fare": false,
-    "invalid_distance": false,
-    "invalid_timestamp": false,
-    "null_critical_fields": false,
-    "unrealistic_distance": false,
-    "unrealistic_fare": false,
-    "zero_distance_paid": false
-  }
+  "record_quality_status": "VALID",
+  "flag_invalid_fare": false,
+  "flag_invalid_distance": false,
+  "flag_invalid_timestamp": false,
+  "flag_null_critical_fields": false,
+  "flag_unrealistic_distance": false,
+  "flag_unrealistic_fare": false,
+  "flag_zero_distance_paid": false
 }
 ```
 

@@ -11,12 +11,11 @@ Specs live in `.spec-docs/`. They are the source of truth. Check status frontmat
 ## Architecture
 
 ```
-app.py                # FastAPI app, router registration, StaticFiles mount
+main.py               # FastAPI app, router registration, StaticFiles mount
 app.yaml              # Databricks Apps startup config
 requirements.txt      # Pinned dependencies
 requirements-dev.txt  # Test dependencies (pytest, httpx) — not deployed
 api/
-  models.py           # Pydantic models — DataQualityChecks, TripResponse (both have from_row())
   db.py               # SQL query, lazy singleton connection
   routes.py           # APIRouter, trip_id validation, structured JSON logging
 pipelines/
@@ -32,11 +31,11 @@ tests/
 ## Commands
 
 ```bash
-# Run tests (inside venv)
-pytest tests/
+# Run tests (inside venv, from data/taxi-app/)
+cd data/taxi-app && pytest tests/
 
 # Run locally (inside venv; needs DATABRICKS_HOST + DATABRICKS_HTTP_PATH set)
-uvicorn app:app --reload
+uvicorn main:app --reload
 
 # Deploy to Databricks Apps
 ./scripts/deploy.sh
@@ -55,7 +54,7 @@ uvicorn app:app --reload
 - Error codes: `400` (bad format), `404` (not found), `503` (warehouse failure)
 - Query inlined in `api/db.py` using `%s` placeholder (DB-API 2.0) — never interpolate `trip_id` into the SQL string
 - Connection singleton: `_state["conn"]` in `api/db.py` — lazy-initialized, reset to `None` on exception to trigger reconnect
-- Flat SQL row → nested response via `TripResponse.from_row()` and `DataQualityChecks.from_row()` in `api/models.py`
+- Raw dict returned directly from `find_trip()` — no model layer, frontend consumes DB column names as-is
 - `StaticFiles` mount at `/` must be declared **last** in `app.py` — it swallows all unmatched routes
 - Mock patch target for tests: `api.db.dbsql.connect`; reset `api.db._state["conn"] = None` between tests
 
