@@ -15,18 +15,7 @@ CREATE OR REPLACE TABLE workspace.gold.nyctaxi_trips
 USING DELTA
 CLUSTER BY (trip_id)
 AS
-WITH base AS (
-  SELECT
-    tpep_pickup_datetime,
-    tpep_dropoff_datetime,
-    trip_distance,
-    fare_amount,
-    pickup_zip,
-    dropoff_zip
-  FROM samples.nyctaxi.trips
-),
-
-with_flags AS (
+WITH with_flags AS (
   SELECT
     sha2(concat_ws('||',
       cast(tpep_pickup_datetime AS string),
@@ -35,7 +24,7 @@ with_flags AS (
       cast(dropoff_zip AS string),
       cast(trip_distance AS string),
       cast(fare_amount AS string)
-    ), 256)                                                       AS trip_id,
+    ), 256) AS trip_id,
     tpep_pickup_datetime,
     tpep_dropoff_datetime,
     trip_distance,
@@ -44,35 +33,13 @@ with_flags AS (
     dropoff_zip,
     fare_amount < 0                                               AS flag_invalid_fare,
     trip_distance < 0                                             AS flag_invalid_distance,
-    tpep_dropoff_datetime < tpep_pickup_datetime                  AS flag_invalid_timestamp,
-    tpep_pickup_datetime IS NULL OR tpep_dropoff_datetime IS NULL  AS flag_null_critical_fields,
+    tpep_pickup_datetime IS NULL OR tpep_dropoff_datetime IS NULL
+      OR tpep_dropoff_datetime < tpep_pickup_datetime             AS flag_invalid_timestamp,
     trip_distance > 100                                           AS flag_unrealistic_distance,
     fare_amount > 1000                                            AS flag_unrealistic_fare,
     trip_distance = 0 AND fare_amount > 0                         AS flag_zero_distance_paid
-  FROM base
-),
-
-with_quality AS (
-  SELECT
-    *,
-    CASE
-      WHEN flag_invalid_fare OR flag_invalid_distance OR flag_invalid_timestamp
-        OR flag_null_critical_fields OR flag_unrealistic_distance
-        OR flag_unrealistic_fare OR flag_zero_distance_paid
-      THEN 'INVALID'
-      ELSE 'VALID'
-    END                  AS record_quality_status,
-    current_timestamp()  AS ingestion_timestamp
-  FROM with_flags
-),
-
-deduped AS (
-  SELECT
-    *,
-    ROW_NUMBER() OVER (PARTITION BY trip_id ORDER BY tpep_pickup_datetime DESC) AS rn
-  FROM with_quality
+  FROM samples.nyctaxi.trips
 )
-
 SELECT
   trip_id,
   tpep_pickup_datetime,
@@ -84,14 +51,17 @@ SELECT
   flag_invalid_fare,
   flag_invalid_distance,
   flag_invalid_timestamp,
-  flag_null_critical_fields,
   flag_unrealistic_distance,
   flag_unrealistic_fare,
   flag_zero_distance_paid,
-  record_quality_status,
-  ingestion_timestamp
-FROM deduped
-WHERE rn = 1;
+  CASE
+    WHEN flag_invalid_fare OR flag_invalid_distance OR flag_invalid_timestamp
+      OR flag_unrealistic_distance OR flag_unrealistic_fare OR flag_zero_distance_paid
+    THEN 'INVALID'
+    ELSE 'VALID'
+  END                  AS record_quality_status,
+  current_timestamp()  AS ingestion_timestamp
+FROM with_flags;
 
 
 --

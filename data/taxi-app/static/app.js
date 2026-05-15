@@ -2,7 +2,6 @@ const FLAG_KEYS = [
   'flag_invalid_fare',
   'flag_invalid_distance',
   'flag_invalid_timestamp',
-  'flag_null_critical_fields',
   'flag_unrealistic_distance',
   'flag_unrealistic_fare',
   'flag_zero_distance_paid',

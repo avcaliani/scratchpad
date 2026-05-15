@@ -43,9 +43,10 @@ uvicorn main:app --reload
 
 ## Key Decisions
 
-**Data pipeline (`pipeline/gold_nyctaxi_trips.sql`)**
+**Data pipeline (`pipelines/gold_nyctaxi_trips.sql`)**
 - `trip_id` = SHA256 of 6 concatenated fields (see spec `002` for exact expression) — never use `monotonically_increasing_id()`
-- Dedup after computing `trip_id`: `ROW_NUMBER() OVER (PARTITION BY trip_id ORDER BY tpep_pickup_datetime DESC) = 1`
+- No dedup step — `trip_id` is derived from all 6 fields, so identical `trip_id` means identical row
+- `flag_null_critical_fields` was merged into `flag_invalid_timestamp` (null timestamps are a subset of invalid timestamps)
 - Load strategy: full overwrite; table uses Liquid Clustering on `trip_id`
 
 **API (`api/`)**

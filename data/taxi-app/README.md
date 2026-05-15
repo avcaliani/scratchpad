@@ -40,10 +40,10 @@ The app is now running at `http://127.0.0.1:8000`.
 Run the gold table script directly in Databricks SQL.
 
 ```
-pipeline/gold_nyctaxi_trips.sql
+pipelines/gold_nyctaxi_trips.sql
 ```
 
-It reads from `samples.nyctaxi.trips` and writes to `usr.gold.nyctaxi_trips` with deterministic trip IDs, 7 quality flags, and Liquid Clustering.
+It reads from `samples.nyctaxi.trips` and writes to `workspace.gold.nyctaxi_trips` with deterministic trip IDs, 6 quality flags, and Liquid Clustering.
 
 ## API
 
@@ -52,7 +52,7 @@ It reads from `samples.nyctaxi.trips` and writes to `usr.gold.nyctaxi_trips` wit
 | `GET` | `/health` | Health check |
 | `GET` | `/api/trips/{trip_id}` | Fetch a trip by ID |
 
-`trip_id` is a 64-character SHA256 hex string. Returns all 16 gold columns as JSON.
+`trip_id` is a 64-character SHA256 hex string. Returns all 15 gold columns as JSON.
 
 ### Sample Trip IDs
 
@@ -81,7 +81,6 @@ curl http://127.0.0.1:8000/api/trips/<trip_id>
   "flag_invalid_fare": false,
   "flag_invalid_distance": false,
   "flag_invalid_timestamp": false,
-  "flag_null_critical_fields": false,
   "flag_unrealistic_distance": false,
   "flag_unrealistic_fare": false,
   "flag_zero_distance_paid": false
