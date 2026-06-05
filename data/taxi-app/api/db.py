@@ -3,18 +3,23 @@ import os
 import time
 
 import databricks.sql as dbsql
+from databricks.sdk.core import Config
 from databricks.sql.client import Connection
 
 logger = logging.getLogger(__name__)
 
-_state: dict = {"conn": None}
-
+_state: dict = {
+    "conn": None,
+    "cfg": Config(),
+}
 
 def _get_conn() -> Connection:
     if _state["conn"] is None:
+        host = _state["cfg"].host.removeprefix("https://").removeprefix("http://")
         _state["conn"] = dbsql.connect(
-            server_hostname=os.environ["DATABRICKS_HOST"],
-            http_path=os.environ["DATABRICKS_HTTP_PATH"],
+            server_hostname=host,
+            http_path=f"/sql/1.0/warehouses/{os.environ['DATABRICKS_WAREHOUSE_ID']}",
+            credentials_provider=lambda: _state["cfg"].authenticate,
         )
         logger.info("Warehouse connection established")
     return _state["conn"]
@@ -38,6 +43,6 @@ def _run_query(query: str, params: tuple) -> tuple[dict | None, float]:
 
 def find_trip(trip_id: str) -> tuple[dict | None, float]:
     return _run_query(
-        query="SELECT * FROM workspace.gold.nyctaxi_trips WHERE trip_id = %s",
+        query="SELECT * FROM workspace.gold.nyctaxi_trips WHERE trip_id = ?",
         params=(trip_id,),
     )

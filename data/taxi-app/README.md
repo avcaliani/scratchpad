@@ -16,21 +16,30 @@
 ## Quick Start
 
 ```bash
+# Install the Dependencies 👇
 uv sync
-uv run uvicorn main:app --reload
-```
 
-The app is now running at `http://127.0.0.1:8000`.
+# Running Locally 👇
+# (1) Get your SQL Warehouse ID and export it, then start the app.
+export DATABRICKS_WAREHOUSE_ID="$(databricks warehouses list --output json | jq -r '.[] | "\(.id)"')"
+
+# (2) Start the App
+# Use `--prepare-environment` if the .venv isn't created
+# You may need to `source .venv/bin/activate`
+databricks apps run-local --debug
+
+# Production Deploy 🔥
+./scripts/deploy.sh
+```
 
 ## Pipeline
 
 Run the gold table script directly in Databricks SQL.
+It reads from `samples.nyctaxi.trips` and writes to `workspace.gold.nyctaxi_trips` with deterministic trip IDs and quality flags.
 
 ```shell
 scripts/gold_nyctaxi_trips.sql
 ```
-
-It reads from `samples.nyctaxi.trips` and writes to `workspace.gold.nyctaxi_trips` with deterministic trip IDs, 6 quality flags, and Liquid Clustering.
 
 ## API
 
@@ -39,16 +48,15 @@ It reads from `samples.nyctaxi.trips` and writes to `workspace.gold.nyctaxi_trip
 | `GET` | `/health` | Health check |
 | `GET` | `/api/trips/{trip_id}` | Fetch a trip by ID |
 
-`trip_id` is a 64-character SHA256 hex string. Returns all 15 gold columns as JSON.
+<details>
+<summary>Sample Trip IDs 🚕</summary>
 
-### Sample Trip IDs
-
-<!-- Add real trip IDs here after running the pipeline -->
 | trip_id | Description |
 |---|---|
-| `...` | ... |
+| `3eed23d2881bf5c439c98b379eb0d79f5597668b22a1f6c821d06a7a9de0e7c0` | All Checks Passed ✅ |
+| `50019912b8ebac4fefed0f28a290cec5ac3be9bb3b9222136aed189455a03b94` | Checks Failing ❌ |
 
-### Example
+**Example**
 
 ```bash
 curl http://127.0.0.1:8000/api/trips/<trip_id>
@@ -74,13 +82,11 @@ curl http://127.0.0.1:8000/api/trips/<trip_id>
 }
 ```
 
-## Deploy
+</details>
 
-```bash
-./scripts/deploy.sh
-```
+## Architecture
 
-> 💡 Warm up the SQL Warehouse before demoing — first query after auto-stop takes 30–60s.
+![arch](.docs/databricks-taxi-app-architecture.svg)
 
 ## References
 

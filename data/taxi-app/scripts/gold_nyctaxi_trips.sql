@@ -72,7 +72,3 @@ select
 from workspace.gold.nyctaxi_trips;
 
 select * from workspace.gold.nyctaxi_trips limit 100;
-
--- Sample IDs for testing:
---  1. 3eed23d2881bf5c439c98b379eb0d79f5597668b22a1f6c821d06a7a9de0e7c0 [valid]
---  2. 50019912b8ebac4fefed0f28a290cec5ac3be9bb3b9222136aed189455a03b94 [invalid]

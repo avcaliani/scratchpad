@@ -41,8 +41,7 @@ def _make_conn(row_data: dict | None) -> MagicMock:
 
 @pytest.fixture(autouse=True)
 def databricks_env(monkeypatch):
-    monkeypatch.setenv("DATABRICKS_HOST", "mock-host")
-    monkeypatch.setenv("DATABRICKS_HTTP_PATH", "/sql/mock")
+    monkeypatch.setenv("DATABRICKS_WAREHOUSE_ID", "mock-warehouse-id")
 
 
 @pytest.fixture(autouse=True)

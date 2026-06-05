@@ -32,6 +32,7 @@ Specs in `.docs/spec-docs/` are the source of truth — check `status` frontmatt
 ```bash
 uv sync                           # install all deps (creates/updates .venv)
 uv run pytest tests/              # run tests
-uv run uvicorn main:app --reload  # run locally (needs DATABRICKS_HOST + DATABRICKS_HTTP_PATH)
-./scripts/deploy.sh               # deploy (generates requirements.txt from uv, then deploys)
+./scripts/deploy.sh               # deploy to Databricks Apps via git source
+databricks apps run-local --prepare-environment --debug  # run locally (--prepare-environment only if .venv doesn't exist)
+databricks apps run-local --debug                        # run locally (subsequent runs)
 ```
