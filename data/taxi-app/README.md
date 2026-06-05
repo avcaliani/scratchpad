@@ -87,6 +87,7 @@ curl http://127.0.0.1:8000/api/trips/<trip_id>
 - [FastAPI docs](https://fastapi.tiangolo.com/)
 - [Databricks SQL Connector](https://docs.databricks.com/en/dev-tools/python-sql-connector.html)
 - [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html)
+- [Databricks Apps — App Development](https://docs.databricks.com/gcp/en/dev-tools/databricks-apps/app-development)
 - [Alpine.js](https://alpinejs.dev/)
 - [Research]
   - [Why Databricks Apps?](.docs/why-databricks-apps.md)
