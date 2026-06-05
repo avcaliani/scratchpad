@@ -15,22 +15,9 @@
 
 ## Quick Start
 
-Create a virtual environment and install dependencies.
-
 ```bash
-# 👇 Setting PyEnv version
-pyenv local 3.11.0
-
-# 👇 Virtual Environment
-python -m venv .venv \
-  && source .venv/bin/activate \
-  && pip install -r requirements.txt
-```
-
-Start the API server.
-
-```bash
-uvicorn main:app --reload
+uv sync
+uv run uvicorn main:app --reload
 ```
 
 The app is now running at `http://127.0.0.1:8000`.
@@ -39,7 +26,7 @@ The app is now running at `http://127.0.0.1:8000`.
 
 Run the gold table script directly in Databricks SQL.
 
-```
+```shell
 scripts/gold_nyctaxi_trips.sql
 ```
 
