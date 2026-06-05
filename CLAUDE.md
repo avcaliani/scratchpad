@@ -28,5 +28,5 @@ Quick experiments and spikes. Each folder is self-contained.
 
 | Path | Stack | What it is |
 | ---- | ----- | ---------- |
-| `infra/elk-app` | Python, Docker, ELK | Elasticsearch + Logstash + Kibana stack via Docker Compose |
+| `misc/elk-app` | Python, Docker, ELK | Elasticsearch + Logstash + Kibana stack via Docker Compose |
 | `misc/python` | Python | Standalone snippets: decorator pattern, venv detection |
