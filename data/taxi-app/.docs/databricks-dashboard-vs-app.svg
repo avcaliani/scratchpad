@@ -1,0 +1,149 @@
+<svg viewBox="0 0 820 801" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', system-ui, sans-serif">
+  <title>AI/BI Dashboard vs Databricks App — comparison table</title>
+  <desc>Comparison of when to use AI/BI Dashboards versus Databricks Apps, covering use cases, limitations, who builds it, user access, infrastructure, effort, and compute.</desc>
+
+  <rect width="820" height="801" rx="12" fill="#ffffff"/>
+
+  <!-- ── HEADER ── -->
+  <rect x="12" y="12" width="175" height="68" rx="6" fill="#F8FAFB"/>
+  <rect x="195" y="12" width="295" height="68" rx="6" fill="#EBF4FD"/>
+  <text x="213" y="36" font-size="11" font-weight="600" fill="#185FA5">AI/BI DASHBOARD</text>
+  <text x="213" y="54" font-size="10" fill="#378ADD">Low-code · read-only analytics</text>
+  <rect x="498" y="12" width="310" height="68" rx="6" fill="#EDF6E0"/>
+  <text x="516" y="36" font-size="11" font-weight="600" fill="#3B6D11">DATABRICKS APP</text>
+  <text x="516" y="54" font-size="10" fill="#639922">Custom code · interactive workflows</text>
+
+  <!-- ══ USE FOR  y=92 h=157 ══ -->
+  <rect x="12" y="92" width="796" height="157" rx="0" fill="#F8FAFB"/>
+  <text x="24" y="112" font-size="9" font-weight="600" letter-spacing="1" fill="#888780">USE FOR</text>
+  <!-- LEFT -->
+  <circle cx="202" cy="120" r="6" fill="#EAF3DE"/><text x="198.5" y="124" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="216" y="124" font-size="11" fill="#2C2C2A">Visualizing a fixed set of business</text>
+  <text x="216" y="139" font-size="11" fill="#2C2C2A">questions</text>
+  <circle cx="202" cy="151" r="6" fill="#EAF3DE"/><text x="198.5" y="155" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="216" y="155" font-size="11" fill="#2C2C2A">KPI tracking, trend charts, report</text>
+  <text x="216" y="170" font-size="11" fill="#2C2C2A">sharing</text>
+  <circle cx="202" cy="182" r="6" fill="#EAF3DE"/><text x="198.5" y="186" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="216" y="186" font-size="11" fill="#2C2C2A">Sharing with users without workspace</text>
+  <text x="216" y="201" font-size="11" fill="#2C2C2A">access</text>
+  <circle cx="202" cy="213" r="6" fill="#EAF3DE"/><text x="198.5" y="217" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="216" y="217" font-size="11" fill="#2C2C2A">Fast, AI-assisted low-code authoring</text>
+  <circle cx="202" cy="229" r="6" fill="#EAF3DE"/><text x="198.5" y="233" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="216" y="233" font-size="11" fill="#2C2C2A">Predefined analytics consumed regularly</text>
+  <!-- RIGHT -->
+  <line x1="492" y1="96" x2="492" y2="245" stroke="#D3D1C7" stroke-width="0.5"/>
+  <circle cx="503" cy="120" r="6" fill="#EAF3DE"/><text x="499.5" y="124" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="517" y="124" font-size="11" fill="#2C2C2A">Data entry forms and write-back to tables</text>
+  <circle cx="503" cy="136" r="6" fill="#EAF3DE"/><text x="499.5" y="140" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="517" y="140" font-size="11" fill="#2C2C2A">Calling ML model serving endpoints</text>
+  <text x="517" y="155" font-size="11" fill="#2C2C2A">interactively</text>
+  <circle cx="503" cy="167" r="6" fill="#EAF3DE"/><text x="499.5" y="171" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="517" y="171" font-size="11" fill="#2C2C2A">RAG / GenAI chat apps on governed data</text>
+  <circle cx="503" cy="183" r="6" fill="#EAF3DE"/><text x="499.5" y="187" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="517" y="187" font-size="11" fill="#2C2C2A">Triggering jobs, pipelines, or workflows</text>
+  <text x="517" y="202" font-size="11" fill="#2C2C2A">from the UI</text>
+  <circle cx="503" cy="214" r="6" fill="#EAF3DE"/><text x="499.5" y="218" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="517" y="218" font-size="11" fill="#2C2C2A">Custom operational interfaces built for</text>
+  <text x="517" y="233" font-size="11" fill="#2C2C2A">a specific problem</text>
+
+  <line x1="12" y1="249" x2="808" y2="249" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- ══ DON'T USE FOR  y=249 h=141 ══ -->
+  <text x="24" y="269" font-size="9" font-weight="600" letter-spacing="1" fill="#888780">DON'T USE FOR</text>
+  <!-- LEFT -->
+  <circle cx="202" cy="277" r="6" fill="#FCEBEB"/><text x="198.5" y="281" font-size="9" font-weight="700" fill="#A32D2D">✕</text>
+  <text x="216" y="281" font-size="11" fill="#2C2C2A">Write-back or any data mutation</text>
+  <text x="216" y="296" font-size="11" fill="#2C2C2A">from the UI</text>
+  <circle cx="202" cy="308" r="6" fill="#FCEBEB"/><text x="198.5" y="312" font-size="9" font-weight="700" fill="#A32D2D">✕</text>
+  <text x="216" y="312" font-size="11" fill="#2C2C2A">Calling ML endpoints or running</text>
+  <text x="216" y="327" font-size="11" fill="#2C2C2A">inference</text>
+  <circle cx="202" cy="339" r="6" fill="#FCEBEB"/><text x="198.5" y="343" font-size="9" font-weight="700" fill="#A32D2D">✕</text>
+  <text x="216" y="343" font-size="11" fill="#2C2C2A">Collecting user input to trigger</text>
+  <text x="216" y="358" font-size="11" fill="#2C2C2A">backend logic</text>
+  <circle cx="202" cy="370" r="6" fill="#FCEBEB"/><text x="198.5" y="374" font-size="9" font-weight="700" fill="#A32D2D">✕</text>
+  <text x="216" y="374" font-size="11" fill="#2C2C2A">Anything transactional</text>
+  <!-- RIGHT -->
+  <line x1="492" y1="253" x2="492" y2="386" stroke="#D3D1C7" stroke-width="0.5"/>
+  <circle cx="503" cy="277" r="6" fill="#FCEBEB"/><text x="499.5" y="281" font-size="9" font-weight="700" fill="#A32D2D">✕</text>
+  <text x="517" y="281" font-size="11" fill="#2C2C2A">Pure read-only analytics — use</text>
+  <text x="517" y="296" font-size="11" fill="#2C2C2A">AI/BI Dashboard instead</text>
+  <circle cx="503" cy="308" r="6" fill="#FCEBEB"/><text x="499.5" y="312" font-size="9" font-weight="700" fill="#A32D2D">✕</text>
+  <text x="517" y="312" font-size="11" fill="#2C2C2A">Public or customer-facing apps — users</text>
+  <text x="517" y="327" font-size="11" fill="#2C2C2A">must be in your Databricks account</text>
+  <circle cx="503" cy="339" r="6" fill="#FCEBEB"/><text x="499.5" y="343" font-size="9" font-weight="700" fill="#A32D2D">✕</text>
+  <text x="517" y="343" font-size="11" fill="#2C2C2A">Heavy data processing — use SQL</text>
+  <text x="517" y="358" font-size="11" fill="#2C2C2A">Warehouse or Lakeflow Jobs instead</text>
+
+  <line x1="12" y1="390" x2="808" y2="390" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- ══ WHO BUILDS IT  y=390 h=63 ══ -->
+  <rect x="12" y="390" width="796" height="63" fill="#F8FAFB"/>
+  <text x="24" y="410" font-size="9" font-weight="600" letter-spacing="1" fill="#888780">WHO BUILDS IT</text>
+  <text x="216" y="422" font-size="11" fill="#2C2C2A">Analysts and low-code authors via</text>
+  <text x="216" y="437" font-size="11" fill="#2C2C2A">AI-assisted authoring</text>
+  <line x1="492" y1="394" x2="492" y2="449" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="517" y="422" font-size="11" fill="#2C2C2A">Developers — requires Python or</text>
+  <text x="517" y="437" font-size="11" fill="#2C2C2A">Node.js code</text>
+  <line x1="12" y1="453" x2="808" y2="453" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- ══ USER ACCESS  y=453 h=63 ══ -->
+  <text x="24" y="473" font-size="9" font-weight="600" letter-spacing="1" fill="#888780">USER ACCESS</text>
+  <circle cx="202" cy="481" r="6" fill="#EAF3DE"/><text x="198.5" y="485" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="216" y="485" font-size="11" fill="#2C2C2A">Anyone in your Databricks account —</text>
+  <text x="216" y="500" font-size="11" fill="#2C2C2A">no workspace access needed</text>
+  <line x1="492" y1="457" x2="492" y2="512" stroke="#D3D1C7" stroke-width="0.5"/>
+  <circle cx="503" cy="481" r="6" fill="#FAEEDA"/><text x="500" y="485" font-size="9" font-weight="700" fill="#854F0B">!</text>
+  <text x="517" y="485" font-size="11" fill="#2C2C2A">Must belong to the same Databricks</text>
+  <text x="517" y="500" font-size="11" fill="#2C2C2A">account — no public access</text>
+  <line x1="12" y1="516" x2="808" y2="516" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- ══ INFRASTRUCTURE  y=516 h=63 ══ -->
+  <rect x="12" y="516" width="796" height="63" fill="#F8FAFB"/>
+  <text x="24" y="536" font-size="9" font-weight="600" letter-spacing="1" fill="#888780">INFRASTRUCTURE</text>
+  <circle cx="202" cy="544" r="6" fill="#EAF3DE"/><text x="198.5" y="548" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="216" y="548" font-size="11" fill="#2C2C2A">Zero infrastructure — fully managed,</text>
+  <text x="216" y="563" font-size="11" fill="#2C2C2A">no deployment needed</text>
+  <line x1="492" y1="520" x2="492" y2="575" stroke="#D3D1C7" stroke-width="0.5"/>
+  <circle cx="503" cy="544" r="6" fill="#EAF3DE"/><text x="499.5" y="548" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="517" y="548" font-size="11" fill="#2C2C2A">Serverless — but always requires a</text>
+  <text x="517" y="563" font-size="11" fill="#2C2C2A">running server process</text>
+  <line x1="12" y1="579" x2="808" y2="579" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- ══ EFFORT  y=579 h=63 ══ -->
+  <text x="24" y="599" font-size="9" font-weight="600" letter-spacing="1" fill="#888780">EFFORT</text>
+  <circle cx="202" cy="607" r="6" fill="#EAF3DE"/><text x="198.5" y="611" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="216" y="611" font-size="11" fill="#2C2C2A">Low — drag-and-drop, AI-assisted,</text>
+  <text x="216" y="626" font-size="11" fill="#2C2C2A">no code required</text>
+  <line x1="492" y1="583" x2="492" y2="638" stroke="#D3D1C7" stroke-width="0.5"/>
+  <circle cx="503" cy="607" r="6" fill="#FAEEDA"/><text x="500" y="611" font-size="9" font-weight="700" fill="#854F0B">!</text>
+  <text x="517" y="611" font-size="11" fill="#2C2C2A">Higher — code to write and a server</text>
+  <text x="517" y="626" font-size="11" fill="#2C2C2A">to maintain</text>
+  <line x1="12" y1="642" x2="808" y2="642" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- ══ COMPUTE  y=642 h=79 ══ -->
+  <rect x="12" y="642" width="796" height="79" fill="#F8FAFB"/>
+  <text x="24" y="662" font-size="9" font-weight="600" letter-spacing="1" fill="#888780">COMPUTE</text>
+  <text x="216" y="678" font-size="11" fill="#2C2C2A">Runs queries via SQL Warehouse</text>
+  <line x1="492" y1="646" x2="492" y2="717" stroke="#D3D1C7" stroke-width="0.5"/>
+  <circle cx="503" cy="670" r="6" fill="#FAEEDA"/><text x="500" y="674" font-size="9" font-weight="700" fill="#854F0B">!</text>
+  <text x="517" y="674" font-size="11" fill="#2C2C2A">App compute = UI rendering only</text>
+  <circle cx="503" cy="686" r="6" fill="#FAEEDA"/><text x="500" y="690" font-size="9" font-weight="700" fill="#854F0B">!</text>
+  <text x="517" y="690" font-size="11" fill="#2C2C2A">Queries → SQL Warehouse · Inference</text>
+  <text x="517" y="705" font-size="11" fill="#2C2C2A">→ Model Serving · Batch → Lakeflow Jobs</text>
+  <line x1="12" y1="721" x2="808" y2="721" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- ══ LEGEND  y=721 h=44 ══ -->
+  <rect x="12" y="721" width="796" height="44" fill="#F1EFE8"/>
+  <circle cx="36" cy="743" r="6" fill="#EAF3DE"/><text x="32.5" y="747" font-size="9" font-weight="700" fill="#3B6D11">✓</text>
+  <text x="50" y="747" font-size="10" fill="#5F5E5A">Supported / recommended</text>
+  <circle cx="230" cy="743" r="6" fill="#FCEBEB"/><text x="226.5" y="747" font-size="9" font-weight="700" fill="#A32D2D">✕</text>
+  <text x="244" y="747" font-size="10" fill="#5F5E5A">Not suitable</text>
+  <circle cx="380" cy="743" r="6" fill="#FAEEDA"/><text x="377" y="747" font-size="9" font-weight="700" fill="#854F0B">!</text>
+  <text x="394" y="747" font-size="10" fill="#5F5E5A">Limitation / caveat</text>
+
+  <!-- SOURCE -->
+  <text x="24" y="779" font-size="9" fill="#B4B2A9">Sources: docs.databricks.com/aws/en/dev-tools/databricks-apps · docs.databricks.com/aws/en/ai-bi/concepts · databricks.com/blog/announcing-general-availability-databricks-apps</text>
+
+  <!-- Outer border -->
+  <rect x="1" y="1" width="818" height="799" rx="12" fill="none" stroke="#D3D1C7" stroke-width="1"/>
+</svg>

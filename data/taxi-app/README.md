@@ -101,4 +101,5 @@ curl http://127.0.0.1:8000/api/trips/<trip_id>
 - [Databricks SQL Connector](https://docs.databricks.com/en/dev-tools/python-sql-connector.html)
 - [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html)
 - [Alpine.js](https://alpinejs.dev/)
-- [TailwindCSS](https://tailwindcss.com/)
+- [Research]
+  - [Why Databricks Apps?](.docs/why-databricks-apps.md)
