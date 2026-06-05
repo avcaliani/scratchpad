@@ -1,7 +1,7 @@
 ---
-status: todo
+status: done
 created: 2026-05-12
-updated: 2026-05-12
+updated: 2026-06-05
 ---
 
 # 1. Infrastructure
@@ -22,14 +22,14 @@ updated: 2026-05-12
 - Single Python process — FastAPI serves both API and frontend
 - API routes: `/api/*` → query the SQL Warehouse
 - Frontend: mount `static/` at `/` using `StaticFiles`
-- Startup command: `uvicorn app.py --host 0.0.0.0 --port 8000`
+- Startup command: `uvicorn main:app --host 0.0.0.0 --port 8000`
 - Auth: OAuth/managed identity — app inherits Databricks Apps runtime credentials, no token required
 
 ---
 
 ## Permissions
 
-- Grant the app read-only access to `usr.gold.nyctaxi_trips`
+- Grant the app read-only access to `workspace.gold.nyctaxi_trips`
 - No write permissions needed
 
 ---
