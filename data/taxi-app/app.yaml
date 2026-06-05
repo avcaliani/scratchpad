@@ -10,7 +10,7 @@ command:
 # https://docs.databricks.com/aws/en/dev-tools/databricks-apps/environment-variables
 env:
   - name: DATABRICKS_WAREHOUSE_ID
-    valueFrom: sql_warehouse
+    valueFrom: sql-warehouse
 
 # It's being configured in the Databricks UI, but you can also specify it here. 
 # If you specify it here, make sure to update the value with your warehouse ID.
