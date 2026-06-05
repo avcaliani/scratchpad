@@ -40,7 +40,7 @@ The app is now running at `http://127.0.0.1:8000`.
 Run the gold table script directly in Databricks SQL.
 
 ```
-pipelines/gold_nyctaxi_trips.sql
+scripts/gold_nyctaxi_trips.sql
 ```
 
 It reads from `samples.nyctaxi.trips` and writes to `workspace.gold.nyctaxi_trips` with deterministic trip IDs, 6 quality flags, and Liquid Clustering.
