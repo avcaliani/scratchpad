@@ -10,6 +10,6 @@ databricks apps start "$APP_NAME"
 #   In Databricks UI, I've already configured the Git Repository
 echo "🚀 Deploying $APP_NAME..."
 databricks apps deploy "$APP_NAME" \
-  --json '{"git_source": {"branch": "databricks/first-app", "source_code_path": "data/taxi-app"}}'
+  --json '{"git_source": {"branch": "main", "source_code_path": "data/taxi-app"}}'
 
 echo "✅ Done!"
