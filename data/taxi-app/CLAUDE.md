@@ -25,7 +25,7 @@ Specs in `.docs/spec-docs/` are the source of truth — check `status` frontmatt
 ## Development Guidelines
 
 1. **API:** Auth is inherited automatically from Databricks Apps runtime — no token handling needed
-2. **Testing:** Always run `pytest tests/` inside the venv before declaring done; never commit failing tests
+2. **Testing:** Always run the unit tests inside the venv before declaring done; never commit failing tests
 
 ## Commands
 
