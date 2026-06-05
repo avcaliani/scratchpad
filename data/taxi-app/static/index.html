@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYC Taxi App</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/app.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+  <div x-data="app()" class="container">
+    <img
+      src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExam9ydzY0eW5vZm0yYnhyamYxeGQyN3M4ZjM5NjczOThsNGxpMmZ2OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/oqGDRaWA5Wz8mfLC5e/giphy.gif"
+      alt="NYC Taxi"
+      width="80"
+      style="display:block; margin-bottom:0.75rem;"
+    />
+    <h1>NYC Taxi Trip Search</h1>
+
+    <div class="card">
+      <div class="search-row">
+        <input
+          x-model="tripId"
+          @keydown.enter="search()"
+          type="text"
+          placeholder="Enter trip ID (64-char hex)"
+        />
+        <button @click="search()" :disabled="loading">
+          <span x-show="!loading">Search</span>
+          <span x-show="loading">Loading...</span>
+        </button>
+      </div>
+    </div>
+
+    <div x-show="error" class="error-banner" x-text="error"></div>
+
+    <div x-show="result" class="card result-card">
+
+      <div class="status-row">
+        <span class="status-label">Quality Status</span>
+        <span
+          x-text="result?.record_quality_status"
+          :class="result?.record_quality_status === 'VALID' ? 'badge badge-valid' : 'badge badge-invalid'"
+        ></span>
+      </div>
+
+      <hr />
+
+      <div>
+        <div class="field-label">Trip ID</div>
+        <div class="trip-id" x-text="result?.trip_id"></div>
+      </div>
+
+      <div class="fields-grid">
+        <div>
+          <div class="field-label">Pickup</div>
+          <div x-text="fmtDate(result?.tpep_pickup_datetime)"></div>
+        </div>
+        <div>
+          <div class="field-label">Dropoff</div>
+          <div x-text="fmtDate(result?.tpep_dropoff_datetime)"></div>
+        </div>
+        <div>
+          <div class="field-label">Pickup ZIP</div>
+          <div x-text="result?.pickup_zip"></div>
+        </div>
+        <div>
+          <div class="field-label">Dropoff ZIP</div>
+          <div x-text="result?.dropoff_zip"></div>
+        </div>
+        <div>
+          <div class="field-label">Distance</div>
+          <div x-text="result?.trip_distance?.toFixed(2) + ' mi'"></div>
+        </div>
+        <div>
+          <div class="field-label">Fare</div>
+          <div x-text="'$' + result?.fare_amount?.toFixed(2)"></div>
+        </div>
+        <div class="field-full">
+          <div class="field-label">Ingested</div>
+          <div x-text="fmtDate(result?.ingestion_timestamp)"></div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div>
+        <div class="field-label" style="margin-bottom:0.5rem;">Quality Flags</div>
+        <div class="flags-list">
+          <template x-for="[key, val] in qualityFlags()" :key="key">
+            <span
+              :class="val ? 'flag-badge flag-bad' : 'flag-badge flag-ok'"
+              x-text="key.replace('flag_', '').replace(/_/g, ' ')"
+            ></span>
+          </template>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

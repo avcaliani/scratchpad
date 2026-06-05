@@ -1,0 +1,21 @@
+command:
+  - uvicorn
+  - "main:app"
+  - "--host"
+  - "0.0.0.0"
+  - "--port"
+  - "8000"
+
+# Understand the "valueFrom"
+# https://docs.databricks.com/aws/en/dev-tools/databricks-apps/environment-variables
+env:
+  - name: DATABRICKS_WAREHOUSE_ID
+    valueFrom: sql-warehouse
+
+# It's being configured in the Databricks UI, but you can also specify it here. 
+# If you specify it here, make sure to update the value with your warehouse ID.
+# resources:
+#   - name: sql-warehouse
+#     sql_warehouse:
+#       id: "<warehouse-id>"
+#       permission: CAN_USE
