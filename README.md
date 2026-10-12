@@ -5,3 +5,26 @@
 Quick experiments, code snippets, and spikes.  
 Messy by design.  
 Ideas may later graduate into proper repositories.
+
+## What's inside 🗂️
+
+Each folder is self-contained.
+
+```text
+.
+├── back-end/
+│   └── fast-api/
+│       └── web-sockets/          # FastAPI WebSocket server example
+├── data/
+│   ├── spark/
+│   │   ├── graphx/               # GraphX PoCs: edge distances, LoL item cost graph
+│   │   ├── high-order-functions/ # Higher-order array functions on fraud data
+│   │   ├── positional-file/      # Scala fixed-width file writer (avocado prices)
+│   │   └── lab-liquid-clustering.ipynb  # Delta liquid clustering on Databricks
+│   └── taxi-app/                 # Taxi data API (FastAPI) as a Databricks App
+├── front-end/
+│   └── dag-visualizer/          # Dynamic DAG with vis-network + Alpine.js
+└── misc/
+    ├── elk-app/                  # Elasticsearch + Logstash + Kibana via Docker Compose
+    └── python/                   # Snippets: decorator pattern, venv detection
+```
