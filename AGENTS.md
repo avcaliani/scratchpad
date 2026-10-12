@@ -12,11 +12,9 @@ Quick experiments and spikes. Each folder is self-contained.
 
 | Path | Stack | What it is |
 | ---- | ----- | ---------- |
-| `data/spark/graphx` | PySpark, Jupyter | GraphX PoCs: edge-distance sums and LoL item cost graph |
-| `data/spark/high-order-functions` | PySpark | Higher-order array functions on fraud transaction data |
-| `data/spark/lab-liquid-clustering.ipynb` | PySpark, Delta, Databricks | Delta Lake liquid clustering on airline dataset |
-| `data/spark/positional-file` | Scala, Spark | Fixed-width positional file writer on avocado price data |
 | `data/taxi-app` | Python, FastAPI | Taxi data API app — has its own `CLAUDE.md` |
+
+Spark experiments live in [lab-spark](https://github.com/avcaliani/lab-spark).
 
 ## Front-end
 
