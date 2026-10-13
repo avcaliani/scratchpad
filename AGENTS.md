@@ -2,12 +2,6 @@
 
 Quick experiments and spikes. Each folder is self-contained.
 
-## Back-end
-
-| Path | Stack | What it is |
-| ---- | ----- | ---------- |
-| `back-end/fast-api/web-sockets` | Python, FastAPI | WebSocket server example |
-
 ## Data
 
 | Path | Stack | What it is |
@@ -15,6 +9,7 @@ Quick experiments and spikes. Each folder is self-contained.
 | `data/taxi-app` | Python, FastAPI | Taxi data API app — has its own `CLAUDE.md` |
 
 Spark experiments live in [lab-spark](https://github.com/avcaliani/lab-spark).
+FastAPI experiments moved to [lab-fast-api](https://github.com/avcaliani/lab-fast-api).
 
 ## Front-end
 
