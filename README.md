@@ -19,13 +19,11 @@ Ideas may later graduate into proper repositories.
 ## What's inside 🗂️
 
 Each folder is self-contained.  
-Spark experiments moved to [lab-spark](https://github.com/avcaliani/lab-spark).
+Spark experiments moved to [lab-spark](https://github.com/avcaliani/lab-spark).  
+FastAPI experiments moved to [lab-fast-api](https://github.com/avcaliani/lab-fast-api).
 
 ```text
 .
-├── back-end/
-│   └── fast-api/
-│       └── web-sockets/          # FastAPI WebSocket server example
 ├── data/
 │   └── taxi-app/                 # Taxi data API (FastAPI) as a Databricks App
 ├── front-end/
