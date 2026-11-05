@@ -1,0 +1,22 @@
+[project]
+name = "web-sockets"
+version = "0.1.0"
+description = "FastAPI WebSockets snippet: the Dunder Mifflin PA System"
+readme = "README.md"
+authors = [{ name = "Anthony Caliani", email = "avcaliani.it@gmail.com" }]
+license = "MIT"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "fastapi==0.143.0",
+    "uvicorn[standard]==0.54.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
