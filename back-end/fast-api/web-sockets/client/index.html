@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3776ab">
+  <title>Dunder Mifflin PA System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;icon_names=account_balance_wallet,apartment,campaign,monetization_on,send,warning">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="workspace">
+    <header>
+      <p class="eyebrow"><span class="brand" aria-hidden="true"><span class="material-symbols-outlined">apartment</span></span> Dunder Mifflin / Scranton branch</p>
+    </header>
+    <main>
+      <section class="panel" aria-labelledby="intercom-title">
+        <div class="panel-header">
+          <h2 id="intercom-title"><span class="material-symbols-outlined" aria-hidden="true">campaign</span>Office intercom</h2>
+          <span class="status" role="status"><span class="lamp" id="lamp-intercom" aria-hidden="true"></span><span id="status-intercom">Connecting</span></span>
+        </div>
+        <p class="description">Say something. Someone in the office will answer.</p>
+        <ul id="intercom-log" role="log" aria-label="Intercom conversation"></ul>
+        <form id="intercom-form">
+          <label class="visually-hidden" for="line">Your message</label>
+          <input id="line" autocomplete="off" placeholder="Is it Pretzel Day?" required>
+          <button id="send" type="submit" disabled>Send <span class="material-symbols-outlined" aria-hidden="true">send</span></button>
+        </form>
+        <p class="hint">Send <code>close</code> to hang up. We’ll reconnect in a moment.</p>
+      </section>
+      <section class="panel" aria-labelledby="ticker-title">
+        <div class="panel-header">
+          <h2 id="ticker-title"><span class="material-symbols-outlined" aria-hidden="true">account_balance_wallet</span>Schrute Bucks</h2>
+          <span class="status" role="status"><span class="lamp" id="lamp-ticker" aria-hidden="true"></span><span id="status-ticker">Connecting</span></span>
+        </div>
+        <p class="description">Office check-ins and redemptions, as they happen.</p>
+        <div class="balance">
+          <span class="material-symbols-outlined" aria-hidden="true">monetization_on</span>
+          <div><span class="balance-label">Session balance</span><div class="balance-value"><span id="total">0</span><span class="balance-unit">SB</span></div></div>
+        </div>
+        <div id="drill" role="status"><span class="material-symbols-outlined" aria-hidden="true">warning</span>Dwight: FIRE DRILL! Everybody out!</div>
+        <ul id="ticker-log" aria-label="Live office activity"></ul>
+        <p class="hint">+5 SB per check-in. Dwight interrupts every 7 events.</p>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

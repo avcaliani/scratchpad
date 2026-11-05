@@ -19,12 +19,15 @@ Ideas may later graduate into proper repositories.
 ## What's inside 🗂️
 
 Each folder is self-contained.  
-Spark experiments moved to [lab-spark](https://github.com/avcaliani/lab-spark).  
-FastAPI experiments moved to [lab-fast-api](https://github.com/avcaliani/lab-fast-api).
+Bigger Spark and FastAPI projects live in [lab-spark](https://github.com/avcaliani/lab-spark) and [lab-fast-api](https://github.com/avcaliani/lab-fast-api).
 
 ```text
 .
+├── back-end/
+│   └── fast-api/
+│       └── web-sockets/          # Dunder Mifflin PA System: intercom chat + Schrute Bucks ticker
 ├── data/
+│   ├── spark/                    # PySpark snippets: graphx, scripts, notebooks (one uv project)
 │   └── taxi-app/                 # Taxi data API (FastAPI) as a Databricks App
 ├── front-end/
 │   └── dag-visualizer/          # Dynamic DAG with vis-network + Alpine.js
